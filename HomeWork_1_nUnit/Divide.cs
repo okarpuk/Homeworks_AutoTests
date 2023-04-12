@@ -9,22 +9,16 @@ namespace HomeWork_1_nUnit
     [TestFixture]
     public class Divide
     {
-        [TestCase(6, 2, 3)]
-        [TestCase(133, 1, 133)]
-        [TestCase(35, 5, 7)]
-        [TestCase(220, 2, 110)]
+        [TestCase(9, 3, 3)]
+        [TestCase(10, 4, 2.5)]
+        [TestCase(-35, 5, -7)]
+        [TestCase(22, 10, 2.2)]
 
         public void DivideTest(double a, double b, double expected)
         {
             var calculation = new Calculator();
-            double actual = calculation.Divide(a, b);
+            var actual = calculation.Divide(a, b);
             Assert.AreEqual(expected, actual);
         }
-
-
-
-
-
     }
-
 }

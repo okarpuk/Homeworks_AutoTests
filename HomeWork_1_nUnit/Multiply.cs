@@ -9,22 +9,17 @@ namespace HomeWork_1_nUnit
     [TestFixture]
     public class Multiply
     {
-        [TestCase(2, 5, 10)]
-        [TestCase(5, 3, 15)]
-        [TestCase(12, 10, 120)]
-        [TestCase(10, 3, 30)]
+        [TestCase(4, 6, 24)]
+        [TestCase(-3, 7, -21)]
+        [TestCase(1.2, 3.5, 4.2)]
+        [TestCase(-3.5, 7.2, -25.2)]
+
+        [Test]
         public void MultiplyTest(double a, double b, double expected)
         {
             var calculation = new Calculator();
-
             var actual = calculation.Multiply(a, b);
-
             Assert.AreEqual(expected, actual);
         }
-
-
-
-
-
     }
 }
