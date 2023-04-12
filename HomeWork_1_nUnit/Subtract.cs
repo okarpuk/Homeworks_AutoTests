@@ -17,9 +17,7 @@ namespace HomeWork_1_nUnit
         public void SubtractTest(double a, double b, double expected)
         {
             var calculation = new Calculator();
-
-            double actual = calculation.Subtract(a, b);
-
+            var actual = calculation.Subtract(a, b);
             Assert.AreEqual(expected, actual);
         }
     }

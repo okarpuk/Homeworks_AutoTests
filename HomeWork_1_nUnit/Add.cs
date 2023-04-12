@@ -18,10 +18,8 @@ namespace HomeWork_1_nUnit
         {
             // Arrange
             var calculation = new Calculator();
-
             // Act
             var actual = calculation.Add(a, b);
-
             // Assert
             Assert.AreEqual(expected, actual);
         }
