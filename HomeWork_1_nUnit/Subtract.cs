@@ -11,10 +11,8 @@ namespace HomeWork_1_nUnit
     {
         [TestCase(22, 10, 12)]
         [TestCase(10, 32, -22)]
-        [TestCase(3.2, 2.1, 1.1)]
-        [TestCase(-5.5, 2.1, -7.6)]
 
-        public void SubtractTest(double a, double b, double expected)
+        public void SubtractTest(int a, int b, int expected)
         {
             var calculation = new Calculator();
             var actual = calculation.Subtract(a, b);

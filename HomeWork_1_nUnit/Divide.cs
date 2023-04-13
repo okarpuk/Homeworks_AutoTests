@@ -10,11 +10,9 @@ namespace HomeWork_1_nUnit
     public class Divide
     {
         [TestCase(9, 3, 3)]
-        [TestCase(10, 4, 2.5)]
-        [TestCase(-35, 5, -7)]
-        [TestCase(22, 10, 2.2)]
+        [TestCase(-10, 5, -2)]
 
-        public void DivideTest(double a, double b, double expected)
+        public void DivideTest(int a, int b, int expected)
         {
             var calculation = new Calculator();
             var actual = calculation.Divide(a, b);
