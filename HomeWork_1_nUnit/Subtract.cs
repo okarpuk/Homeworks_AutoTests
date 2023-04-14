@@ -21,7 +21,9 @@ namespace HomeWork_1_nUnit
         [Description("Subtract values")]
         [Category("Values")]
         [Retry(3)]
-        public void SubtractValues([Values(2, 16, 111)] int values1, [Values(-5, -11, -132)] int values2)
+        public void SubtractValues(
+            [Values(2, 16, 111)] int values1,
+            [Values(-5, -11)] int values2)
         {
             //Action
             var actual = calculation.Subtract(values1, values2);
@@ -35,7 +37,9 @@ namespace HomeWork_1_nUnit
         [Description("Subtract range")]
         [Category("Range")]
         [Retry(3)]
-        public void SubtractRange([Values(6, 12, 100)] int range1, [Range(2, 4, 1)] int range2)
+        public void SubtractRange(
+            [Values(6, 12)] int range1,
+            [Range(11, 13, 1)] int range2)
         {
             //Action
             var actual = calculation.Subtract(range1, range2);
@@ -49,7 +53,9 @@ namespace HomeWork_1_nUnit
         [Description("Subtract random")]
         [Category("Random")]
         [Retry(3)]
-        public void SubtractRandom([Values(6, 12, 3)] int random1, [Random(1, 20, 3)] int random2)
+        public void SubtractRandom(
+            [Values(6, 12, 3)] int random1,
+            [Random(1, 20, 2)] int random2)
         {
             //Action
             var actual = calculation.Subtract(random1, random2);

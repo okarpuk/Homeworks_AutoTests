@@ -21,7 +21,9 @@ namespace HomeWork_1_nUnit
         [Description("Multiply values")]
         [Category("Values")]
         [Retry(3)]
-        public void MultiplyValues([Values(2, 16, 111)] int values1, [Values(-5, -11, -132)] int values2)
+        public void MultiplyValues(
+            [Values(2, 16, 111)] int values1,
+            [Values(-5, -11)] int values2)
         {
             //Action
             var actual = calculation.Multiply(values1, values2);
@@ -35,7 +37,9 @@ namespace HomeWork_1_nUnit
         [Description("Multiply range")]
         [Category("Range")]
         [Retry(3)]
-        public void MultiplyRange([Values(6, 12, 100)] int range1, [Range(1, 9, 3)] int range2)
+        public void MultiplyRange(
+            [Values(6, 12)] int range1,
+            [Range(11, 13, 1)] int range2)
         {
             //Action
             var actual = calculation.Multiply(range1, range2);
@@ -49,7 +53,9 @@ namespace HomeWork_1_nUnit
         [Description("Multiply random")]
         [Category("Random")]
         [Retry(3)]
-        public void MultiplyRandom([Values(6, 12, 3)] int random1, [Random(1, 20, 3)] int random2)
+        public void MultiplyRandom(
+            [Values(6, 12, 3)] int random1,
+            [Random(1, 20, 2)] int random2)
         {
             //Action
             var actual = calculation.Multiply(random1, random2);

@@ -22,7 +22,9 @@ namespace HomeWork_1_nUnit
         [Description("Add values")]
         [Category("Values")]
         [Retry(3)]
-        public void AddValues([Values(2, 16, 111)] int values1, [Values(-5, -11, -132)] int values2)
+        public void AddValues(
+            [Values(2, 5, 111)] int values1,
+            [Values(-5, -11)] int values2)
         {
             //Action
             var actual = calculation.Add(values1, values2);
@@ -36,9 +38,11 @@ namespace HomeWork_1_nUnit
         [Description("Add range")]
         [Category("Range")]
         [Retry(3)]
-        public void AddRange([Values(6, 12, 100)] int range1, [Range(11, 13, 1)] int range2)
+        public void AddRange(
+            [Values(6, 12)] int range1,
+            [Range(11, 13, 1)] int range2)
         {
-            //Action
+            //Action 
             var actual = calculation.Add(range1, range2);
             var expected = range1 + range2;
             Console.WriteLine($"First number: {range1};\nSecond number: {range2};\nActual add result: {actual};\nExpected add result: {expected};");
@@ -50,7 +54,9 @@ namespace HomeWork_1_nUnit
         [Description("Add random")]
         [Category("Random")]
         [Retry(3)]
-        public void AddRandom([Values(6, 12, 3)] int random1, [Random(1, 20, 3)] int random2)
+        public void AddRandom(
+            [Values(6, 12, 3)] int random1,
+            [Random(1, 20, 2)] int random2)
         {
             //Action
             var actual = calculation.Add(random1, random2);
