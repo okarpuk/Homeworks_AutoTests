@@ -82,7 +82,7 @@ namespace HomeWork_1_nUnit
         [TearDown]
         public void TearDown()
         {
-            Console.WriteLine("Divide completed successfully");
+            Console.WriteLine("Divide test completed successfully");
         }
 
         [OneTimeTearDown]
