@@ -31,7 +31,7 @@ namespace HomeWork_1_nUnit
             //Action
             var actual = calculation.Add(random1, random2);
             var expected = random1 + random2;
-            Console.WriteLine($"First number: {random1};\nSecond number: {random2};\nActual result: {actual};\nExpected result: {expected};");
+            Console.WriteLine($"First number: {random1};\nSecond number: {random2};\nActual add result: {actual};\nExpected add result: {expected};");
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -45,7 +45,7 @@ namespace HomeWork_1_nUnit
             //Action
             var actual = calculation.Add(values1, values2);
             var expected = values1 + values2;
-            Console.WriteLine($"First number: {values1};\nSecond number: {values2};\nActual result: {actual};\nExpected result: {expected};");
+            Console.WriteLine($"First number: {values1};\nSecond number: {values2};\nActual add result: {actual};\nExpected add result: {expected};");
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -59,7 +59,7 @@ namespace HomeWork_1_nUnit
             //Action
             var actual = calculation.Add(range1, range2);
             var expected = range1 + range2;
-            Console.WriteLine($"First number: {range1};\nSecond number: {range2};\nActual result: {actual};\nExpected result: {expected};");
+            Console.WriteLine($"First number: {range1};\nSecond number: {range2};\nActual add result: {actual};\nExpected add result: {expected};");
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -75,7 +75,7 @@ namespace HomeWork_1_nUnit
             //Action
             var actual = calculation.Add(testCase1, testCase2);
             var expected = testCase1 + testCase2;
-            Console.WriteLine($"First number: {testCase1};\nSecond number: {testCase2};\nActual result: {actual};\nExpected result: {expected};");
+            Console.WriteLine($"First number: {testCase1};\nSecond number: {testCase2};\nActual add result: {actual};\nExpected add result: {expected};");
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -83,13 +83,13 @@ namespace HomeWork_1_nUnit
         [TearDown]
         public void TearDown()
         {
-            Console.WriteLine("Add test finished");
+            Console.WriteLine("Add test completed successfully");
         }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            Console.WriteLine("All add tests finished");
+            Console.WriteLine("All add tests completed successfully");
         }
     }
 }
