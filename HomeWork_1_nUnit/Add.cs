@@ -10,30 +10,12 @@ namespace HomeWork_1_nUnit
     [TestFixture]
     public class Add
     {
-        int random1;
-        int random2;
         Calculator calculation;
 
         [OneTimeSetUp]
         public void AddSetup()
         {
             calculation = new Calculator();
-            random1 = new Random().Next(-10, -5);
-            random2 = new Random().Next(12, 34);
-        }
-
-        [Test]
-        [Description("AddRandom")]
-        [Category("Random")]
-        [Retry(3)]
-        public void AddRandom()
-        {
-            //Action
-            var actual = calculation.Add(random1, random2);
-            var expected = random1 + random2;
-            Console.WriteLine($"First number: {random1};\nSecond number: {random2};\nActual add result: {actual};\nExpected add result: {expected};");
-            //Assert
-            Assert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -54,12 +36,26 @@ namespace HomeWork_1_nUnit
         [Description("Add range")]
         [Category("Range")]
         [Retry(3)]
-        public void AddRange([Values(6, 12, 100)] int range1, [Range(1, 3, 5)] int range2)
+        public void AddRange([Values(6, 12, 100)] int range1, [Range(11, 13, 1)] int range2)
         {
             //Action
             var actual = calculation.Add(range1, range2);
             var expected = range1 + range2;
             Console.WriteLine($"First number: {range1};\nSecond number: {range2};\nActual add result: {actual};\nExpected add result: {expected};");
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        [Description("Add random")]
+        [Category("Random")]
+        [Retry(3)]
+        public void AddRandom([Values(6, 12, 3)] int random1, [Random(1, 20, 3)] int random2)
+        {
+            //Action
+            var actual = calculation.Add(random1, random2);
+            var expected = random1 + random2;
+            Console.WriteLine($"First number: {random1};\nSecond number: {random2};\nActual add result: {actual};\nExpected add result: {expected};");
             //Assert
             Assert.AreEqual(expected, actual);
         }

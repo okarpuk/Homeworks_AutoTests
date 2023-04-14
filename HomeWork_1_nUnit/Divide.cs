@@ -9,30 +9,12 @@ namespace HomeWork_1_nUnit
     [TestFixture]
     public class Divide
     {
-        int random1;
-        int random2;
         Calculator calculation;
 
         [OneTimeSetUp]
         public void DivideSetup()
         {
             calculation = new Calculator();
-            random1 = new Random().Next(-10, -5);
-            random2 = new Random().Next(12, 34);
-        }
-
-        [Test]
-        [Description("DivideRandom")]
-        [Category("Random")]
-        [Retry(3)]
-        public void DivideRandom()
-        {
-            //Action
-            var actual = calculation.Divide(random1, random2);
-            var expected = random1 / random2;
-            Console.WriteLine($"First number: {random1};\nSecond number: {random2};\nActual divide result: {actual};\nExpected divide result: {expected};");
-            //Assert
-            Assert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -53,12 +35,26 @@ namespace HomeWork_1_nUnit
         [Description("Divide range")]
         [Category("Range")]
         [Retry(3)]
-        public void DivideRange([Values(6, 12, 100)] int range1, [Range(1, 3, 5)] int range2)
+        public void DivideRange([Values(6, 12, 100)] int range1, [Range(12, 17, 2)] int range2)
         {
             //Action
             var actual = calculation.Divide(range1, range2);
             var expected = range1 / range2;
             Console.WriteLine($"First number: {range1};\nSecond number: {range2};\nActual divide result: {actual};\nExpected divide result: {expected};");
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        [Description("Divide random")]
+        [Category("Random")]
+        [Retry(3)]
+        public void DivideRandom([Values(6, 12, 3)] int random1, [Random(1, 20, 3)] int random2)
+        {
+            //Action
+            var actual = calculation.Divide(random1, random2);
+            var expected = random1 / random2;
+            Console.WriteLine($"First number: {random1};\nSecond number: {random2};\nActual add result: {actual};\nExpected add result: {expected};");
             //Assert
             Assert.AreEqual(expected, actual);
         }
