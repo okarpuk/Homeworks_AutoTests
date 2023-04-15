@@ -21,8 +21,7 @@ namespace HomeWork_2_Selenium
         {
             ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
             Thread.Sleep(1000);
-            var addRemoveElement = ChromeDriver.FindElement(By.LinkText("Checkboxes"));
-            addRemoveElement.Click();
+            ChromeDriver.FindElement(By.LinkText("Checkboxes")).Click();
             Thread.Sleep(1000);
 
             List<IWebElement> checkboxes = ChromeDriver.FindElements(By.CssSelector("[type = checkbox]")).ToList();

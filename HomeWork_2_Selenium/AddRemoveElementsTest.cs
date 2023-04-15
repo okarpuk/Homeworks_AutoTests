@@ -24,8 +24,7 @@ namespace HomeWork_2_Selenium
         {
             ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
             Thread.Sleep(1000); //добавил для удобства просмотра действий автотеста
-            var addRemoveElement = ChromeDriver.FindElement(By.LinkText("Add/Remove Elements"));
-            addRemoveElement.Click();
+            ChromeDriver.FindElement(By.LinkText("Add/Remove Elements")).Click();
             Thread.Sleep(1000);
 
             var addElement = ChromeDriver.FindElement(By.XPath("//button[text()='Add Element']"));
