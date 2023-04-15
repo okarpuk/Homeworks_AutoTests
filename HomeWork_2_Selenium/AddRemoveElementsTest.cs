@@ -23,9 +23,9 @@ namespace HomeWork_2_Selenium
         public void AddRemoveElement()
         {
             ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
-            var addDeleteElement = ChromeDriver.FindElement(By.XPath("//*[@id=\"content\"]/ul/li[2]/a"));
             Thread.Sleep(1000); //добавил для удобства просмотра действий автотеста
-            addDeleteElement.Click();
+            var addRemoveElement = ChromeDriver.FindElement(By.LinkText("Add/Remove Elements"));
+            addRemoveElement.Click();
             Thread.Sleep(1000);
 
             var addElement = ChromeDriver.FindElement(By.XPath("//button[text()='Add Element']"));
@@ -48,6 +48,7 @@ namespace HomeWork_2_Selenium
         public void TearDown()
         {
             ChromeDriver.Quit();
+            Console.WriteLine("ADD / REMOVE ELEMENTS TEST COMPLETED");
         }
     }
 }
