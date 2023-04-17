@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using NuGet.Frameworks;
 using OpenQA.Selenium.Support.UI;
+using System.Xml;
 
 namespace HomeWork_2_Selenium
 {
@@ -19,43 +20,36 @@ namespace HomeWork_2_Selenium
         }
 
         [Test]
-        public void Checkboxes()
+        public void DropDown()
         {
             ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
             Thread.Sleep(1000);
             ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
             Thread.Sleep(1000);
 
+            SelectElement dropDown1 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
+            dropDown1.SelectByText("Option 1");
+            Thread.Sleep(1000);
+            var isFind1 = ChromeDriver.FindElement(By.XPath("//*[@id=\"dropdown\"]/option[2]"));
+            var isSelected1 = isFind1.Selected;
+            Assert.IsTrue(isSelected1);
 
+            ChromeDriver.Navigate().Refresh();
+            Thread.Sleep(1000);
 
-
-            IWebElement dropDown = ChromeDriver.FindElement(By.Id("dropdown"));
-            SelectElement select = new SelectElement(dropDown);
-            select.SelectByText("Option 1");
-            Assert.IsNotNull(select);
-
-
-            //var dropDown = ChromeDriver.FindElement(By.Id("dropdown"));
-            //dropDown.Click();
-            //Thread.Sleep(1000);
-
-            //List<IWebElement> dropDownElements = ChromeDriver.FindElements(By.CssSelector("[type = value]")).ToList();
-
-            //dropDownElements[0].Click();
-            //Assert.IsNotNull(dropDownElements[0].GetAttribute("selected"));
-            //Thread.Sleep(1000);
-
-            //Assert.IsNotNull(checkboxes[1].GetAttribute("checked"));
-            //checkboxes[1].Click();
-            //Thread.Sleep(1000);
-            //Assert.IsNull(checkboxes[1].GetAttribute("checked"));
+            SelectElement dropDown2 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
+            dropDown2.SelectByText("Option 2");
+            Thread.Sleep(1000);
+            var isFind2 = ChromeDriver.FindElement(By.XPath("//*[@id=\"dropdown\"]/option[3]"));
+            var isSelected2 = isFind2.Selected;
+            Assert.IsTrue(isSelected2);
         }
 
-        //[TearDown]
-        //public void TearDown()
-        //{
-        //    ChromeDriver.Quit();
-        //    Console.WriteLine("CHECKBOXES TEST COMPLETED");
-        //}
+        [TearDown]
+        public void TearDown()
+        {
+            ChromeDriver.Quit();
+            Console.WriteLine("DROPDOWN TEST COMPLETED");
+        }
     }
 }
