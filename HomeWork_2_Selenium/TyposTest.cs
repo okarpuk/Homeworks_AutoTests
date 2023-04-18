@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using NuGet.Frameworks;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -28,39 +29,17 @@ namespace HomeWork_2_Selenium
             ChromeDriver.FindElement(By.LinkText("Typos")).Click();
             Thread.Sleep(1000);
 
+            var textToCheck = ChromeDriver.FindElement(By.TagName("p")).Text;
 
-            var check = ChromeDriver.FindElement(By.TagName("p"));
-           
-            
-            
-            //inputDigit.SendKeys(Keys.ArrowUp);
-            //Thread.Sleep(1000);
-
-
-
-
-            //inputDigit.Clear();
-            //Thread.Sleep(1000);
-            //inputDigit.SendKeys(Keys.ArrowDown);
-
-
-            //inputDigit.Clear();
-
-            //inputDigit.SendKeys("abc");
-            //Thread.Sleep(1000);
-
-
-
-
-
-
-
+            var requestedText = "Sometimes you'll see a typo, other times you won't.";
+            Assert.That(textToCheck, Is.EqualTo(requestedText));
         }
-        //[TearDown]
-        //public void TearDown()
-        //{
-        //    ChromeDriver.Quit();
-        //    Console.WriteLine("INPUTS TEST COMPLETED");
-        //}
+
+        [TearDown]
+        public void TearDown()
+        {
+            ChromeDriver.Quit();
+            Console.WriteLine("TYPOS TEST COMPLETED");
+        }
     }
 }
