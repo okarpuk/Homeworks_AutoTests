@@ -38,9 +38,7 @@ namespace HomeWork_2_Selenium
             Thread.Sleep(1000);
 
             List<IWebElement> elements = ChromeDriver.FindElements(By.XPath("//button[text()='Delete']")).ToList();
-            int count = elements.Count;
-            Assert.AreEqual(1, count);
-            Console.WriteLine($"ELEMENTS COUNT IS - {count} ");
+            Assert.AreEqual(1, elements.Count);
         }
 
         [TearDown]

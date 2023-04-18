@@ -35,10 +35,7 @@ namespace HomeWork_2_Selenium
             input.SendKeys(Keys.ArrowUp);
             Thread.Sleep(1000);
 
-            var arrowUpResult = ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value");
-            Assert.That("3", Is.EqualTo(arrowUpResult));
-            input.Clear();
-            Thread.Sleep(1000);
+            Assert.That("3", Is.EqualTo(ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value")));
         }
 
         [Test]
@@ -54,10 +51,7 @@ namespace HomeWork_2_Selenium
             input.SendKeys(Keys.ArrowDown);
             Thread.Sleep(1000);
 
-            var arrowDownResult = ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value");
-            Assert.That("-2", Is.EqualTo(arrowDownResult));
-            input.Clear();
-            Thread.Sleep(1000);
+            Assert.That("-2", Is.EqualTo(ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value")));
         }
 
         [Test]
@@ -73,10 +67,7 @@ namespace HomeWork_2_Selenium
             input.SendKeys(Keys.ArrowDown);
             Thread.Sleep(1000);
 
-            var arrowUpDownResult = ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value");
-            Assert.That("0", Is.EqualTo(arrowUpDownResult));
-            input.Clear();
-            Thread.Sleep(1000);
+            Assert.That("0", Is.EqualTo(ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value")));
         }
 
         [Test]
@@ -91,10 +82,7 @@ namespace HomeWork_2_Selenium
             input.SendKeys("12345");
             Thread.Sleep(1000);
 
-            var KeyboardResult = ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value");
-            Assert.That("12345", Is.EqualTo(KeyboardResult));
-            input.Clear();
-            Thread.Sleep(1000);
+            Assert.That("12345", Is.EqualTo(ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value")));
         }
 
         [Test]
@@ -109,8 +97,7 @@ namespace HomeWork_2_Selenium
             input.SendKeys("abc");
             Thread.Sleep(1000);
 
-            var textResult = ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value");
-            Assert.IsEmpty(textResult);
+            Assert.IsEmpty(ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value"));
         }
 
         [TearDown]

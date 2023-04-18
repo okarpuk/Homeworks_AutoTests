@@ -17,7 +17,7 @@ namespace HomeWork_2_Selenium
         }
 
         [Test]
-        public void Checkboxes()
+        public void Checkbox1()
         {
             ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
             Thread.Sleep(1000);
@@ -25,12 +25,21 @@ namespace HomeWork_2_Selenium
             Thread.Sleep(1000);
 
             List<IWebElement> checkboxes = ChromeDriver.FindElements(By.CssSelector("[type = checkbox]")).ToList();
-
             Assert.IsNull(checkboxes[0].GetAttribute("checked"));
             checkboxes[0].Click();
             Thread.Sleep(1000);
             Assert.IsNotNull(checkboxes[0].GetAttribute("checked"));
+        }
 
+        [Test]
+        public void Checkbox2()
+        {
+            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
+            Thread.Sleep(1000);
+            ChromeDriver.FindElement(By.LinkText("Checkboxes")).Click();
+            Thread.Sleep(1000);
+
+            List<IWebElement> checkboxes = ChromeDriver.FindElements(By.CssSelector("[type = checkbox]")).ToList();
             Assert.IsNotNull(checkboxes[1].GetAttribute("checked"));
             checkboxes[1].Click();
             Thread.Sleep(1000);

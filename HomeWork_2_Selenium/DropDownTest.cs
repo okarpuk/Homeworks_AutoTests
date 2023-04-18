@@ -20,29 +20,46 @@ namespace HomeWork_2_Selenium
         }
 
         [Test]
-        public void DropDown()
+        public void CheckElements()
+        {
+            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
+            Thread.Sleep(1000);
+            ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
+            Thread.Sleep(1000);
+        
+            IWebElement elements = ChromeDriver.FindElement(By.Id("dropdown"));
+            elements.Click();
+            Thread.Sleep(1000);
+            Assert.IsNotNull(ChromeDriver.FindElement(By.XPath($"//option[2]")));
+            Assert.IsNotNull(ChromeDriver.FindElement(By.XPath($"//option[3]")));
+        }
+
+        [Test]
+        public void SelectOption1()
         {
             ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
             Thread.Sleep(1000);
             ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
             Thread.Sleep(1000);
 
-            SelectElement dropDown1 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
-            dropDown1.SelectByText("Option 1");
+            SelectElement option1 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
+            option1.SelectByText("Option 1");
             Thread.Sleep(1000);
-            var isFind1 = ChromeDriver.FindElement(By.XPath("//*[@id=\"dropdown\"]/option[2]"));
-            var isSelected1 = isFind1.Selected;
-            Assert.IsTrue(isSelected1);
+            Assert.IsTrue(ChromeDriver.FindElement(By.XPath($"//option[2]")).Selected);
+        }
 
-            ChromeDriver.Navigate().Refresh();
+        [Test]
+        public void SelectOption2()
+        {
+            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
+            Thread.Sleep(1000);
+            ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
             Thread.Sleep(1000);
 
-            SelectElement dropDown2 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
-            dropDown2.SelectByText("Option 2");
+            SelectElement option2 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
+            option2.SelectByText("Option 2");
             Thread.Sleep(1000);
-            var isFind2 = ChromeDriver.FindElement(By.XPath("//*[@id=\"dropdown\"]/option[3]"));
-            var isSelected2 = isFind2.Selected;
-            Assert.IsTrue(isSelected2);
+            Assert.IsTrue(ChromeDriver.FindElement(By.XPath($"//option[3]")).Selected);
         }
 
         [TearDown]
