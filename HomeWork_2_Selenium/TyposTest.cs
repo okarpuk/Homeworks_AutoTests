@@ -5,11 +5,12 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support;
 using System.Xml;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace HomeWork_2_Selenium
 {
     [TestFixture]
-    internal class TyposTest
+    public class TyposTest
     {
         WebDriver ChromeDriver { get; set; }
 
@@ -29,14 +30,9 @@ namespace HomeWork_2_Selenium
             ChromeDriver.FindElement(By.LinkText("Typos")).Click();
             Thread.Sleep(1000);
 
-
-
-            var textToCheck = ChromeDriver.FindElement(By.TagName("p[2]")).Text;
-
-
-
-            var requestedText = "Sometimes you'll see a typo, other times you won't.";
-            Assert.That(textToCheck, Is.EqualTo(requestedText));
+            var textToCheck = ChromeDriver.FindElement(By.XPath($"//p[2]")).Text;
+            var verificationText = "Sometimes you'll see a typo, other times you won't.";
+            Assert.That(textToCheck, Is.EqualTo(verificationText));
         }
 
         [TearDown]
