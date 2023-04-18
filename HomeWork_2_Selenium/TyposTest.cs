@@ -29,7 +29,7 @@ namespace HomeWork_2_Selenium
             ChromeDriver.FindElement(By.LinkText("Typos")).Click();
             Thread.Sleep(1000);
 
-            var textToCheck = ChromeDriver.FindElement(By.TagName("p")).Text;
+            var textToCheck = ChromeDriver.FindElement(By.TagName("p[2]")).Text;
 
             var requestedText = "Sometimes you'll see a typo, other times you won't.";
             Assert.That(textToCheck, Is.EqualTo(requestedText));
