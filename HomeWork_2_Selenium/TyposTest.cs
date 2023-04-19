@@ -20,16 +20,14 @@ namespace HomeWork_2_Selenium
             ChromeDriver = new ChromeDriver();
             ChromeDriver.Manage().Window.Maximize();
             ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
+            ChromeDriver.FindElement(By.LinkText("Typos")).Click();
+            Thread.Sleep(1000);
         }
 
         [Test]
         public void Typos()
         {
-            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
-            Thread.Sleep(1000);
-            ChromeDriver.FindElement(By.LinkText("Typos")).Click();
-            Thread.Sleep(1000);
-
             var textToCheck = ChromeDriver.FindElement(By.XPath($"//p[2]")).Text;
             var verificationText = "Sometimes you'll see a typo, other times you won't.";
             Assert.That(textToCheck, Is.EqualTo(verificationText));

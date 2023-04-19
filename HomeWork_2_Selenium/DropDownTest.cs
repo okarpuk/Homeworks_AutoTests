@@ -17,18 +17,15 @@ namespace HomeWork_2_Selenium
             ChromeDriver = new ChromeDriver();
             ChromeDriver.Manage().Window.Maximize();
             ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
+            ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
+            Thread.Sleep(1000);
         }
 
         [Test]
         public void CheckElements()
         {
-            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
-            Thread.Sleep(1000);
-            ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
-            Thread.Sleep(1000);
-        
-            IWebElement elements = ChromeDriver.FindElement(By.Id("dropdown"));
-            elements.Click();
+            ChromeDriver.FindElement(By.Id("dropdown")).Click();
             Thread.Sleep(1000);
             Assert.IsNotNull(ChromeDriver.FindElement(By.XPath($"//option[2]")));
             Assert.IsNotNull(ChromeDriver.FindElement(By.XPath($"//option[3]")));
@@ -37,11 +34,6 @@ namespace HomeWork_2_Selenium
         [Test]
         public void SelectOption1()
         {
-            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
-            Thread.Sleep(1000);
-            ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
-            Thread.Sleep(1000);
-
             SelectElement option1 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
             option1.SelectByText("Option 1");
             Thread.Sleep(1000);
@@ -51,11 +43,6 @@ namespace HomeWork_2_Selenium
         [Test]
         public void SelectOption2()
         {
-            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
-            Thread.Sleep(1000);
-            ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
-            Thread.Sleep(1000);
-
             SelectElement option2 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
             option2.SelectByText("Option 2");
             Thread.Sleep(1000);

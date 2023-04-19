@@ -17,26 +17,19 @@ namespace HomeWork_2_Selenium
             ChromeDriver = new ChromeDriver();
             ChromeDriver.Manage().Window.Maximize();
             ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
+            ChromeDriver.FindElement(By.LinkText("Add/Remove Elements")).Click();
+            Thread.Sleep(1000); //добавил для удобства просмотра действий автотеста
         }
 
         [Test]
         public void AddRemoveElement()
         {
-            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
-            Thread.Sleep(1000); //добавил для удобства просмотра действий автотеста
-            ChromeDriver.FindElement(By.LinkText("Add/Remove Elements")).Click();
+            ChromeDriver.FindElement(By.XPath("//button[text()='Add Element']")).Click();
+            ChromeDriver.FindElement(By.XPath("//button[text()='Add Element']")).Click();
             Thread.Sleep(1000);
-
-            var addElement = ChromeDriver.FindElement(By.XPath("//button[text()='Add Element']"));
-            addElement.Click();
+            ChromeDriver.FindElement(By.XPath("//button[text()='Delete']")).Click();
             Thread.Sleep(1000);
-            addElement.Click();
-            Thread.Sleep(1000);
-
-            var deleteElement = ChromeDriver.FindElement(By.XPath("//button[text()='Delete']"));
-            deleteElement.Click();
-            Thread.Sleep(1000);
-
             List<IWebElement> elements = ChromeDriver.FindElements(By.XPath("//button[text()='Delete']")).ToList();
             Assert.AreEqual(1, elements.Count);
         }
