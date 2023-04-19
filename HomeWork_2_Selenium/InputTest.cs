@@ -1,25 +1,15 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using NuGet.Frameworks;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using System.Xml;
-using System.Xml.Linq;
-using System;
 
 namespace HomeWork_2_Selenium
 {
     [TestFixture]
-    internal class InputTest
+    internal class InputTest : BaseTest
     {
-        WebDriver ChromeDriver { get; set; }
-
         [SetUp]
         public void Setup()
         {
-            ChromeDriver = new ChromeDriver();
-            ChromeDriver.Manage().Window.Maximize();
-            ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
             ChromeDriver.FindElement(By.LinkText("Inputs")).Click();
             Thread.Sleep(1000);
         }
@@ -67,13 +57,6 @@ namespace HomeWork_2_Selenium
             input.SendKeys("abc");
             Thread.Sleep(1000);
             Assert.IsEmpty(ChromeDriver.FindElement(By.TagName("input")).GetAttribute("value"));
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            ChromeDriver.Quit();
-            Console.WriteLine("INPUTS TEST COMPLETED");
         }
     }
 }

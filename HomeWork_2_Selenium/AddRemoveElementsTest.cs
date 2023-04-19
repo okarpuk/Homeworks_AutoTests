@@ -1,23 +1,15 @@
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Collections.Generic;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using OpenQA.Selenium.Support.UI;
 
 namespace HomeWork_2_Selenium
 {
     [TestFixture]
-    internal class AddRemoveElementsTest
+    internal class AddRemoveElementsTest : BaseTest
     {
-        WebDriver ChromeDriver { get; set; }
-
         [SetUp]
         public void Setup()
         {
-            ChromeDriver = new ChromeDriver();
-            ChromeDriver.Manage().Window.Maximize();
-            ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
             ChromeDriver.FindElement(By.LinkText("Add/Remove Elements")).Click();
             Thread.Sleep(1000); //добавил для удобства просмотра действий автотеста
         }
@@ -32,13 +24,6 @@ namespace HomeWork_2_Selenium
             Thread.Sleep(1000);
             List<IWebElement> elements = ChromeDriver.FindElements(By.XPath("//button[text()='Delete']")).ToList();
             Assert.AreEqual(1, elements.Count);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            ChromeDriver.Quit();
-            Console.WriteLine("ADD / REMOVE ELEMENTS TEST COMPLETED");
         }
     }
 }

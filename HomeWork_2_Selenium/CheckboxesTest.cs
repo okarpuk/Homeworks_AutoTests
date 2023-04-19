@@ -1,20 +1,15 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace HomeWork_2_Selenium
 {
     [TestFixture]
-    internal class CheckboxesTest
+    internal class CheckboxesTest : BaseTest
     {
-        WebDriver ChromeDriver { get; set; }
-
         [SetUp]
         public void Setup()
         {
-            ChromeDriver = new ChromeDriver();
-            ChromeDriver.Manage().Window.Maximize();
-            ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
             ChromeDriver.FindElement(By.LinkText("Checkboxes")).Click();
             Thread.Sleep(1000);
         }
@@ -37,13 +32,6 @@ namespace HomeWork_2_Selenium
             checkboxes[1].Click();
             Thread.Sleep(1000);
             Assert.IsNull(checkboxes[1].GetAttribute("checked"));
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            ChromeDriver.Quit();
-            Console.WriteLine("CHECKBOXES TEST COMPLETED");
         }
     }
 }

@@ -1,23 +1,15 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using NuGet.Frameworks;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using System.Xml;
 
 namespace HomeWork_2_Selenium
 {
     [TestFixture]
-    internal class DropDownTest
+    internal class DropDownTest : BaseTest
     {
-        WebDriver ChromeDriver { get; set; }
-
         [SetUp]
         public void Setup()
         {
-            ChromeDriver = new ChromeDriver();
-            ChromeDriver.Manage().Window.Maximize();
-            ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            ChromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com");
             ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
             Thread.Sleep(1000);
         }
@@ -47,13 +39,6 @@ namespace HomeWork_2_Selenium
             option2.SelectByText("Option 2");
             Thread.Sleep(1000);
             Assert.IsTrue(ChromeDriver.FindElement(By.XPath($"//option[3]")).Selected);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            ChromeDriver.Quit();
-            Console.WriteLine("DROPDOWN TEST COMPLETED");
         }
     }
 }
