@@ -11,7 +11,6 @@ namespace HomeWork_2_Selenium
         public void Setup()
         {
             ChromeDriver.FindElement(By.LinkText("Checkboxes")).Click();
-            Thread.Sleep(1000);
         }
 
         [Test]
@@ -20,7 +19,6 @@ namespace HomeWork_2_Selenium
             List<IWebElement> checkboxes = ChromeDriver.FindElements(By.CssSelector("[type = checkbox]")).ToList();
             Assert.IsNull(checkboxes[0].GetAttribute("checked"));
             checkboxes[0].Click();
-            Thread.Sleep(1000);
             Assert.IsNotNull(checkboxes[0].GetAttribute("checked"));
         }
 
@@ -30,7 +28,6 @@ namespace HomeWork_2_Selenium
             List<IWebElement> checkboxes = ChromeDriver.FindElements(By.CssSelector("[type = checkbox]")).ToList();
             Assert.IsNotNull(checkboxes[1].GetAttribute("checked"));
             checkboxes[1].Click();
-            Thread.Sleep(1000);
             Assert.IsNull(checkboxes[1].GetAttribute("checked"));
         }
     }

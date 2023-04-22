@@ -11,7 +11,6 @@ namespace HomeWork_2_Selenium
         public void Setup()
         {
             ChromeDriver.FindElement(By.LinkText("Add/Remove Elements")).Click();
-            Thread.Sleep(1000); //добавил для удобства просмотра действий автотеста
         }
 
         [Test]
@@ -19,9 +18,7 @@ namespace HomeWork_2_Selenium
         {
             ChromeDriver.FindElement(By.XPath("//button[text()='Add Element']")).Click();
             ChromeDriver.FindElement(By.XPath("//button[text()='Add Element']")).Click();
-            Thread.Sleep(1000);
             ChromeDriver.FindElement(By.XPath("//button[text()='Delete']")).Click();
-            Thread.Sleep(1000);
             List<IWebElement> elements = ChromeDriver.FindElements(By.XPath("//button[text()='Delete']")).ToList();
             Assert.AreEqual(1, elements.Count);
         }

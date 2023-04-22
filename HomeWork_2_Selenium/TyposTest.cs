@@ -11,7 +11,6 @@ namespace HomeWork_2_Selenium
         public void Setup()
         {
             ChromeDriver.FindElement(By.LinkText("Typos")).Click();
-            Thread.Sleep(1000);
         }
 
         [Test]

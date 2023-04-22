@@ -11,14 +11,12 @@ namespace HomeWork_2_Selenium
         public void Setup()
         {
             ChromeDriver.FindElement(By.LinkText("Dropdown")).Click();
-            Thread.Sleep(1000);
         }
 
         [Test]
         public void CheckElements()
         {
             ChromeDriver.FindElement(By.Id("dropdown")).Click();
-            Thread.Sleep(1000);
             Assert.IsNotNull(ChromeDriver.FindElement(By.XPath($"//option[2]")));
             Assert.IsNotNull(ChromeDriver.FindElement(By.XPath($"//option[3]")));
         }
@@ -28,7 +26,6 @@ namespace HomeWork_2_Selenium
         {
             SelectElement option1 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
             option1.SelectByText("Option 1");
-            Thread.Sleep(1000);
             Assert.IsTrue(ChromeDriver.FindElement(By.XPath($"//option[2]")).Selected);
         }
 
@@ -37,7 +34,6 @@ namespace HomeWork_2_Selenium
         {
             SelectElement option2 = new SelectElement(ChromeDriver.FindElement(By.Id("dropdown")));
             option2.SelectByText("Option 2");
-            Thread.Sleep(1000);
             Assert.IsTrue(ChromeDriver.FindElement(By.XPath($"//option[3]")).Selected);
         }
     }
